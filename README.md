@@ -1,46 +1,11 @@
 # Smart Study Space App
 
-A modern Next.js application that integrates Azure AD login and Canvas LMS API to show personalized study spaces and course schedules.
+This Next.js repository is a prototype. The tracked `.env.local` contained a Canvas access token. The file is removed from the current tree and ignored going forward, but the token remains exposed in prior Git history until the owner revokes it in Canvas.
 
-## Features
+Do not put Canvas tokens in `NEXT_PUBLIC_*` variables: Next.js exposes those values to browser code. If Canvas integration is added, use a server-side authentication flow and keep credentials in private server-side configuration. No Canvas credential is required to run the current code in this repository.
 
-- Azure Active Directory (MSAL) Authentication
-- Canvas LMS REST API Integration (OAuth2 token)
-- Custom UI Components
-- Tailwind CSS
-- Production-ready `.env` setup
+## Local setup
 
-## Getting Started
+Run `npm install` and `npm run dev`, then open `http://localhost:3000`. Copy `.env.example` to a private local environment file only if server-side configuration is later needed. Do not commit local env files.
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Create `.env.local`:
-   ```bash
-   NEXT_PUBLIC_CANVAS_TOKEN=your_canvas_token_here
-   ```
-
-3. Run the app:
-   ```bash
-   npm run dev
-   ```
-
-4. Visit:
-   ```
-   http://localhost:3000
-   ```
-
----
-
-### Folder Structure
-
-- `pages/` — Next.js pages
-- `api/` — API handlers & services
-- `components/ui/` — Reusable UI components
-- `styles/` — Tailwind global styles
-
----
-
-Built with ❤️ using Next.js, Tailwind, and Canvas LMS API.
+The owner should revoke the exposed token in Canvas Account > Settings > Approved Integrations, review its recent use, and enter any replacement privately after a server-side integration is designed.
